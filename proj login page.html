@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+		#background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            background-size: cover;
+        }
+
+        .container {
+            background-color: mintcream;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #logo {
+            width: 120px; /* Adjust as needed */
+            height: auto;
+            margin-bottom: -10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: DimGrey;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: blue;
+            text-decoration: underline;	
+        }
+
+        button[type="button"] {
+            margin-top: 10px;
+            width: 48%;
+        }
+
+        button[type="button"]:first-child {
+            margin-right: 48%;
+        }
+		img
+		{
+            width: 75px; /* Adjust as needed */
+            height: auto;
+            margin-bottom: -10px;
+		}
+		#loginWithGoogleLogo {
+            cursor: pointer;
+        }
+
+        #loginWithGoogleLogo:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted id="background-video">
+        <source src="pv1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <img src="projlogo.png" alt="Logo" id="logo">
+        <h2>Login</h2>
+        <form id="loginForm" action="http://localhost:8000/userssearch" method="post">
+            <input type="text" id="email" class="email" placeholder="Email or Phone Number" required>
+            <input type="password" id="password" class="password" placeholder="Password" required>
+            <a href="./main page.html"><button>Login</button></a>
+
+        </form>
+		 <p><a href="fogrot password.html" id="forgotPasswordLink">Forgot Password?</a></p>
+		 <img src="proj logo.png" alt="Login with Google" id="loginWithGoogleLogo" onclick="loginWithGoogle()">
+        <p>Not registered? <a href="signup.html" id="signupLink">Sign Up</a></p>
+        
+
+    </div>
+
+    <!-- JavaScript code for functionalities -->
+    <script>
+        // Function to handle login
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            // Add your logic to authenticate the user with username and password
+        }
+
+        // Function to handle signup
+        document.getElementById('signupLink').addEventListener('click', function() {
+            // Redirect to signup page or show signup form
+        });
+
+        // Function to handle forgot password
+        document.getElementById('forgotPasswordLink').addEventListener('click', function() {
+            // Redirect to forgot password page or show forgot password form
+        });
+
+        // Function to handle login with Google
+        // Function to handle login with Google
+        document.getElementById('loginWithGoogleLogo').addEventListener('click', function() {
+            // Replace this with your actual logic to initiate Google OAuth flow
+            // For example, you can redirect the user to Google OAuth authentication URL
+            window.location.href = 'https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=email%20profile';
+        });
+
+        // Function to handle login with mobile number
+        function loginWithMobile() {
+            // Add your logic to handle login with mobile number
+        }
+    </script>
+</body>
+</html>

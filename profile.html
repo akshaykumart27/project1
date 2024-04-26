@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #75b4b1;
+        }
+        .container {
+            justify-content: center;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info label {
+            font-weight: bold;
+        }
+        .profile-info p {
+            margin: 5px 0;
+        }
+        .profile-actions {
+            text-align: center;
+        }
+        .edit-profile-btn {
+         background-color: #4caf50;
+         margin-right: 500px;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+        .signout{
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        
+        }
+        .edit-profile-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <label for="name">Name:</label>
+            <p>Akshay kumar</p>
+            <label for="email">Email:</label>
+            <p>akshaykumar@gmail.com</p>
+            <label for="phone">Phone:</label>
+            <p>6385693211</p>
+            <label for="address">Address:</label>
+            <p>123 Main St,  salem City, Country india</p>
+        </div>
+        <div class="profile-actions">
+            <button class="edit-profile-btn">Edit Profile</button>
+            <!-- Add other profile actions/buttons here (e.g., change password, delete account, etc.) -->
+        </div>
+        <div class="profile-actions">
+            
+            <a href="./proj login page.html"><button class="signout">Sign Out</button></a>
+            <!-- Add other profile actions/buttons here (e.g., change password, delete account, etc.) -->
+        </div>
+    </div>
+</body>
+</html>

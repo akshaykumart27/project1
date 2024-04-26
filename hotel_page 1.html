@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Menu</title>
+  <style>
+    /* Basic styling for the header */
+    header {
+      background-color: grey;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    /* Styling for the hotel name */
+    .hotel-name {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .col-2, .col-10 {
+        float: left;
+        box-sizing: border-box;
+    }
+
+    .col-2 {
+        width: 16.66667%; /* 2 columns out of 12 */
+    }
+
+    .col-10 {
+        width: 83.33333%; /* 10 columns out of 12 */
+    }
+
+    .dish {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .dish h2 {
+        margin-top: 0;
+    }
+
+    .price {
+        color: green;
+        font-weight: bold;
+    }
+
+    .rating {
+        color: #ffa500;
+    }
+
+    .count-button {
+        margin-left: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .count-button:hover {
+        background-color: #0056b3;
+    }
+
+    .cart {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .cart:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hotel-name">Barbequeen Nation</div>
+</header>
+<body>
+    <div class="container">
+	<div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchDishes()" placeholder="Search for dishes...">
+        </div>
+        <div class="row">
+            <div class="col-2"></div> <!-- Empty space -->
+            <div class="col-10">
+                <div class="dish" id="dish1">
+                    <h2>Chicken Biryani</h2>
+					<p>Serves 1 | Richly flavoured aromatic rice layered with marinated chicken pieces in a delicate blend of whole spices.</p>
+                    <p><span class="price">$10</span> | <span class="rating">Rating: 4.5</span></p>
+                    
+                    <span id="count_Dish1">0</span>
+                    <button class="count-button" onclick="incrementCount('Dish1')">+</button>
+                    <button class="count-button" onclick="decrementCount('Dish1')">-</button>
+                </div>
+                <div class="dish" id="dish2">
+                    <h2>Dish 2</h2>
+                    <p><span class="price">$15</span> | <span class="rating">Rating: 4.8</span></p>
+                    <button onclick="addToCart('Dish 2')">Add to Cart</button>
+                    <span id="count_Dish2">0</span>
+                    <button class="count-button" onclick="incrementCount('Dish2')">+</button>
+                    <button class="count-button" onclick="decrementCount('Dish2')">-</button>
+                </div>
+            </div>
+            <div class="col-2"></div> <!-- Empty space -->
+        </div>
+    </div>
+
+    <!-- Cart button -->
+    <button class="cart" onclick="viewCart()"<a href="payment.html">View Cart</a></button>
+	
+	
+	
+	
+	<script>
+        function addToCart(dishName) {
+            var countElement = document.getElementById("count_" + dishName.replace(/\s/g, ""));
+            var count = parseInt(countElement.textContent);
+            countElement.textContent = count + 1;
+        }
+
+        function incrementCount(dishName) {
+            var countElement = document.getElementById("count_" + dishName.replace(/\s/g, ""));
+            var count = parseInt(countElement.textContent);
+            countElement.textContent = count + 1;
+        }
+
+        function decrementCount(dishName) {
+            var countElement = document.getElementById("count_" + dishName.replace(/\s/g, ""));
+            var count = parseInt(countElement.textContent);
+            if (count > 0) {
+                countElement.textContent = count - 1;
+            }
+        }
+
+        // Function to update cart display
+        function updateCartDisplay() {
+            var cartList = document.getElementById("cartItems");
+            cartList.innerHTML = ""; // Clear previous items
+            var cartItems = JSON.parse(localStorage.getItem('cart')) || {};
+
+            // Add each item to the cart list
+            for (var item in cartItems) {
+                var listItem = document.createElement("li");
+                listItem.textContent = item + " - Quantity: " + cartItems[item];
+                cartList.appendChild(listItem);
+            }
+
+            // Show the cart
+            document.getElementById("cart").style.display = "block";
+        }
+
+        // Function to save cart and redirect to payment page
+        function saveCartAndRedirect() {
+            window.location.href = "payment.html";
+        }
+
+        // Initial cart display update
+        updateCartDisplay();
+		function searchDishes() {
+            var input, filter, dishes, dish, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            dishes = document.querySelectorAll('.dish');
+            for (i = 0; i < dishes.length; i++) {
+                dish = dishes[i].getElementsByTagName("h2")[0];
+                txtValue = dish.textContent || dish.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    dishes[i].style.display = "";
+                } else {
+                    dishes[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #f7c7c7;
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 300px;
+}
+#background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            background-size: cover;
+        }
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* Add more styles as needed */
+
+</style>
+</head>
+<body>
+    <video autoplay loop muted id="background-video">
+        <source src="p5.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        <!-- Your payment page content -->
+        <h2>Payment Page</h2>
+        <h3>Cart Items</h3>
+        <ul id="cartItems"></ul>
+        <button>pay now</button>
+    </div>
+
+    <!-- Your JavaScript -->
+    <script>
+        // Function to display cart items on payment page
+        function displayCartItems() {
+            var cartList = document.getElementById("cartItems");
+            var cartItems = JSON.parse(localStorage.getItem('cart')) || {};
+
+            // Add each item to the cart list
+            for (var item in cartItems) {
+                var listItem = document.createElement("li");
+                listItem.textContent = item + " - Quantity: " + cartItems[item];
+                cartList.appendChild(listItem);
+            }
+        }
+
+        // Initial cart display on payment page
+        displayCartItems();
+    </script>
+</body>
+</html>

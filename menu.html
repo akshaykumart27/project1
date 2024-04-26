@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CLOUD KITCHENING </title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-image: url('proj2.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            background-size: cover;
+        }
+        h1 {
+  	   font-family: 'Courier New', monospace;
+           font-size: 25px;
+	}
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .featured-restaurants {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .restaurant-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted id="background-video">
+        <source src="p7.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <h1> CLOUD KITCHENING </h1>
+    </header>
+    <nav>
+        <!-- Navigation links can be added here -->
+        <a href="#">Home</a> |
+        <a href="#">About</a> |
+        <a href="#">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for restaurants...">
+            <button>Search</button>
+        </div>
+        <h2>Featured Restaurants</h2>
+        <div class="featured-restaurants">
+            <!-- Featured restaurants can be dynamically added here -->
+            <div class="restaurant-card">
+                <h3>Restaurant 1</h3>
+                <img src="restaurant1.jpg" alt="Restaurant 1">
+                <p>Description of Restaurant 1</p>
+                <button>Order Now</button>
+            </div>
+            <div class="restaurant-card">
+                <h3>Restaurant 2</h3>
+                <img src="restaurant2.jpg" alt="Restaurant 2">
+                <p>Description of Restaurant 2</p>
+                <button>Order Now</button>
+            </div>
+            <!-- Add more restaurant cards as needed -->
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Food Delivery App. All rights reserved.
+    </footer>
+</body>
+</html>

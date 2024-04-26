@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD to CART</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+        .product h2 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .product p {
+            margin: 10px 0;
+            color: #777;
+        }
+        .product button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        #cart {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        #cart h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #333;
+        }
+        #cart ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        #cart ul li {
+            margin-bottom: 5px;
+            color: #777;
+        }
+        #cart p {
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product" id="ITEM1">
+    <h2>CHICKEN BIRYANI</h2>
+    <p>Price: ₹200</p>
+    <button onclick="addToCart('CHICKEN BIRYANI', 200)">Add to Cart</button>
+</div>
+
+<div class="product" id="ITEM2">
+    <h2>GRILL CHICKEN</h2>
+    <p>Price: ₹750</p>
+    <button onclick="addToCart('GRILL CHICKEN', 750)">Add to Cart</button>
+</div>
+
+<div class="product" id="ITEM3">
+    <h2>WHITE PASTA</h2>
+    <p>Price: ₹250</p>
+    <button onclick="addToCart('WHITE PASTA', 250)">Add to Cart</button>
+</div>
+
+<div class="product" id="ITEM4">
+    <h2>MUTTON CHUKKA</h2>
+    <p>Price: ₹350</p>
+    <button onclick="addToCart('MUTTON CHUKKA', 350)">Add to Cart</button>
+</div>
+
+<div id="cart">
+    <h2>SHOPPING CART</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: ₹</p>
+    
+    <a href="./payment.html"><button>ORDER NOW</button></a>
+</div>
+
+<script>
+    let cartItems = [];
+    let cartTotal = 0;
+
+    function addToCart(productName, price) {
+        cartItems.push({ name: productName, price: price });
+        cartTotal += price;
+
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.querySelector('#cart p');
+
+        cartItemsElement.innerHTML = '';
+
+        cartItems.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${item.name} - ₹${item.price}`;
+            cartItemsElement.appendChild(listItem);
+        });
+
+        cartTotalElement.textContent = `Total: ₹${cartTotal}`;
+    }
+</script>
+
+</body>
+</html>
